@@ -3,31 +3,31 @@ static PreparedSkillData data;
 methodmap PreparedSkill __nullable__ < SlotID {
   property SkillID targetSkill {
     public get() {
-      return data.preparedArray.getValue(as<int>(this), as<int>(PreparedArray_TargetSkill));
+      return data.preparedArray.getValue(view_as<int>(this), view_as<int>(PreparedArray_TargetSkill));
     }
 
     public set(SkillID skillID) {
-      return data.preparedArray.setValue(as<int>(this), skillID, as<int>(PreparedArray_TargetSkill));
+      return data.preparedArray.setValue(view_as<int>(this), skillID, view_as<int>(PreparedArray_TargetSkill));
     }
   }
 
   property StringMap varMap {
     public get() {
-      return data.preparedArray.getValue(as<int>(this), as<int>(PreparedArray_VarMap));
+      return data.preparedArray.getValue(view_as<int>(this), view_as<int>(PreparedArray_VarMap));
     }
 
     public set(StringMap map) {
-      data.preparedArray.setValue(as<int>(this), map, as<int>(PreparedArray_VarMap));
+      data.preparedArray.setValue(view_as<int>(this), map, view_as<int>(PreparedArray_VarMap));
     }
   }
 
   property StringMap varTypeMap {
     public get() {
-      return data.preparedArray.getValue(as<int>(this), as<int>(PreparedArray_VarTypeMap));
+      return data.preparedArray.getValue(view_as<int>(this), view_as<int>(PreparedArray_VarTypeMap));
     }
 
     public set(StringMap map) {
-      data.preparedArray.setValue(as<int>(this), map, as<int>(PreparedArray_VarTypeMap));
+      data.preparedArray.setValue(view_as<int>(this), map, view_as<int>(PreparedArray_VarTypeMap));
     }
   }
 
@@ -56,7 +56,7 @@ methodmap PreparedSkill __nullable__ < SlotID {
   }
 
   public PreparedSkill(SkillCFG targetSkill) {
-    PreparedSkill preparedSkill = as<PreparedSkill>(new SlotID());
+    PreparedSkill preparedSkill = view_as<PreparedSkill>(new SlotID());
 
     preparedSkill.targetSkill = targetSkill;
     preparedSkill.varMap = new StringMap();

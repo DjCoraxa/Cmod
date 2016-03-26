@@ -3,36 +3,36 @@ static SkillCFGData data;
 methodmap SkillCFG __nullable__ < SkillID {
   property ForwardPrepareSkill fwdPrepare {
     public get() {
-      return data.fwdPrepareArray.getValue(as<int>(this));
+      return data.fwdPrepareArray.getValue(view_as<int>(this));
     }
 
     public set(ForwardPrepareSkill fwdPrepare) {
-      data.fwdPrepareArray.setValue(as<int>(this), fwdPrepare);
+      data.fwdPrepareArray.setValue(view_as<int>(this), fwdPrepare);
     }
   }
 
   property ForwardStartSkill fwdStart {
     public get() {
-      return data.fwdStartArray.getValue(as<int>(this));
+      return data.fwdStartArray.getValue(view_as<int>(this));
     }
 
     public set(ForwardStartSkill fwdStart) {
-      data.fwdStartArray.setValue(as<int>(this), fwdStart)
+      data.fwdStartArray.setValue(view_as<int>(this), fwdStart)
     }
   }
 
   property ForwardStopSkill fwdStop {
     public get() {
-      return data.fwdStopArray.getValue(as<int>(this));
+      return data.fwdStopArray.getValue(view_as<int>(this));
     }
 
     public set(ForwardStopSkill fwdStop) {
-      data.fwdStopArray.setValue(as<int>(this), fwdStop)
+      data.fwdStopArray.setValue(view_as<int>(this), fwdStop)
     }
   }
 
   public SkillCFG(SkillID skillID) {
-    SkillCFG skill = as<SkillCFG>(skillID);
+    SkillCFG skill = view_as<SkillCFG>(skillID);
     skill.fwdPrepare = new ForwardPrepareSkill();
     skill.fwdStart = new ForwardStartSkill();
     skill.fwdStop = new ForwardStopSkill();

@@ -15,7 +15,7 @@ public void onCreateSkill(SkillID skillID) {
 }
 
 public void onRemoveSkill(SkillID skillID) {
-  SkillCFG skillCFG = as<SkillCFG>(skillID);
+  SkillCFG skillCFG = view_as<SkillCFG>(skillID);
   skillCFG.remove();
 }
 
@@ -52,7 +52,7 @@ void preparedSkillNative() {
 }
 
 public int native_PreparedSkill_PreparedSkill(Handle plugin, int numParams) {
-  return as<int>(new PreparedSkill(GetNativeCell(1)));
+  return view_as<int>(new PreparedSkill(GetNativeCell(1)));
 }
 
 public int native_PreparedSkill_remove(Handle plugin, int numParams) {
@@ -129,7 +129,7 @@ public int native_PreparedSkill_getFloat(Handle plugin, int numParams) {
   float value = 0.0;
   preparedSkill.varMap.GetValue(key, value);
 
-  return as<int>(value);
+  return view_as<int>(value);
 }
 
 public int native_PreparedSkill_getString(Handle plugin, int numParams) {
@@ -171,18 +171,18 @@ public int native_PreparedSkill_getVarType(Handle plugin, int numParams) {
   PreparedVarType varType = PreparedVar_Unknown;
   preparedSkill.varTypeMap.GetValue(key, varType);
 
-  return as<int>(varType);
+  return view_as<int>(varType);
 }
 
 public int native_PreparedSkill_start(Handle plugin, int numParams) {
   PreparedSkill preparedSkill = GetNativeCell(1);
-  SkillCFG skillCFG = as<SkillCFG>(preparedSkill.targetSkill);
+  SkillCFG skillCFG = view_as<SkillCFG>(preparedSkill.targetSkill);
   skillCFG.fwdStart.send(skillCFG, preparedSkill, GetNativeCell(2));
 }
 
 public int native_PreparedSkill_stop(Handle plugin, int numParams) {
   PreparedSkill preparedSkill = GetNativeCell(1);
-  SkillCFG skillCFG = as<SkillCFG>(preparedSkill.targetSkill);
+  SkillCFG skillCFG = view_as<SkillCFG>(preparedSkill.targetSkill);
   skillCFG.fwdStop.send(skillCFG, preparedSkill, GetNativeCell(2));
 }
 

@@ -5,7 +5,7 @@ methodmap SkillData __nullable__ < NamedSlotData {
   public SkillData() {
     fwdPrepareArray = new DataArray();
     fwdRunArray = new DataArray();
-    return as<SkillData>(new NamedSlotData());
+    return view_as<SkillData>(new NamedSlotData());
   }
 
   property DataArray fwdPrepareArray {

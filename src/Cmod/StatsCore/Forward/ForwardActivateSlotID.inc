@@ -1,6 +1,6 @@
 methodmap ForwardActivateSlotID < ForwardBase {
   public ForwardActivateSlotID() {
-    return as<ForwardActivateSlotID>(CreateForward(ET_Ignore, Param_Cell, Param_Cell, Param_Cell));
+    return view_as<ForwardActivateSlotID>(CreateForward(ET_Ignore, Param_Cell, Param_Cell, Param_Cell));
   }
 
   public void send(Slot slotID, int client, int points) {

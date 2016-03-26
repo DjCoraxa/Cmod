@@ -1,8 +1,6 @@
 #include <sourcemod>
 #include <cmod/Skill>
 
-#include "Cmod/Utility/BasicMacro/view_as"
-
 #include "Cmod/PreparedSkill/Config"
 
 #include "Cmod/Utility/Data/DataArray"

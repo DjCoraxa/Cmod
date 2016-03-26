@@ -1,8 +1,6 @@
 #include <sourcemod>
 #include <sdktools>
 
-#include "Cmod/Utility/BasicMacro/view_as"
-
 #include "Cmod/WeaponCore/Config"
 
 #include "Cmod/Utility/Data/DataArray"

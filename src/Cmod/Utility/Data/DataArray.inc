@@ -1,6 +1,6 @@
 methodmap DataArray __nullable__ < Handle {
   public DataArray(int blocksize = 1, int startsize = 0) {
-    return as<DataArray>(new ArrayList(blocksize, startsize));
+    return view_as<DataArray>(new ArrayList(blocksize, startsize));
   }
 
   property int length {
@@ -55,6 +55,6 @@ methodmap DataArray __nullable__ < Handle {
 
     for (int index = length; index < newSize; ++index)
       for (int i = 0; i < block; i++)
-        this.setValue(index, value, i);  
+        this.setValue(index, value, i);
   }
 };

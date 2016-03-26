@@ -5,7 +5,7 @@ methodmap ItemData __nullable__ < NamedSlotData {
   public ItemData() {
     fwdEnableArray = new DataArray();
     fwdDisableArray = new DataArray();
-    return as<ItemData>(new NamedSlotData());
+    return view_as<ItemData>(new NamedSlotData());
   }
 
   property DataArray fwdEnableArray {

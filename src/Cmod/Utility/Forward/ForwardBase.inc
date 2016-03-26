@@ -5,7 +5,7 @@
 
 methodmap ForwardBase < Handle {
   property Handle handle {
-    public get() { return as<Handle>(this); }
+    public get() { return view_as<Handle>(this); }
   }
 
   public bool hook(Handle plugin, Function callback) {

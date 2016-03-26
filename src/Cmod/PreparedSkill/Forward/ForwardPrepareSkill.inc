@@ -1,6 +1,6 @@
 methodmap ForwardPrepareSkill __nullable__ < ForwardBase {
   public ForwardPrepareSkill() {
-    return as<ForwardPrepareSkill>(CreateForward(ET_Ignore, Param_Cell, Param_Cell));
+    return view_as<ForwardPrepareSkill>(CreateForward(ET_Ignore, Param_Cell, Param_Cell));
   }
 
   public void send(SkillID skillID, int preparedSkill) {

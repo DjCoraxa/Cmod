@@ -3,7 +3,7 @@ static DataArray fwdActivateArray;
 methodmap StatsData __nullable__ < NamedSlotData {
   public StatsData() {
     fwdActivateArray = new DataArray();
-    return as<StatsData>(new NamedSlotData());
+    return view_as<StatsData>(new NamedSlotData());
   }
 
   property DataArray fwdActivateArray {

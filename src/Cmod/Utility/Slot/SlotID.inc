@@ -12,7 +12,7 @@ methodmap SlotID __nullable__ < Slot {
   }
 
   public bool isValid() {
-    if (!(Slot_Invalid < this < as<SlotID>(data.slotArray.length)))
+    if (!(Slot_Invalid < this < view_as<SlotID>(data.slotArray.length)))
       return false;
 
     if (this.status == SlotStatus_Free)
@@ -22,11 +22,11 @@ methodmap SlotID __nullable__ < Slot {
   }
 
   public SlotID() {
-    SlotID slotID = as<SlotID>(data.slotArray.findSlot(SlotStatus_Free));
+    SlotID slotID = view_as<SlotID>(data.slotArray.findSlot(SlotStatus_Free));
 
     if (slotID == Slot_Invalid) {
       data.slotArray.resize(data.slotArray.length + RESIZE_BACKUP);
-      slotID = as<SlotID>(data.slotArray.findSlot(SlotStatus_Free));
+      slotID = view_as<SlotID>(data.slotArray.findSlot(SlotStatus_Free));
     }
 
     slotID.status = SlotStatus_Use;

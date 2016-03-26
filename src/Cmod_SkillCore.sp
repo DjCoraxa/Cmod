@@ -1,7 +1,5 @@
 #include <sourcemod>
 
-#include "Cmod/Utility/BasicMacro/view_as"
-
 #include "Cmod/SkillCore/Config"
 
 #include "Cmod/Utility/Data/DataArray"
