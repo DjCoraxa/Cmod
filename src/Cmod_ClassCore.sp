@@ -21,6 +21,7 @@
 #include "Cmod/ClassCore/Enum/ClassID"
 #include "Cmod/ClassCore/Forward/ForwardEnableSlotID"
 #include "Cmod/ClassCore/Forward/ForwardDisableSlotID"
+#include "Cmod/ClassCore/Forward/ForwardRunSlot"
 #include "Cmod/ClassCore/ClassData"
 #include "Cmod/ClassCore/ClassID"
 

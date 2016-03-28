@@ -21,6 +21,16 @@ methodmap ClassID __nullable__ < NamedSlotID {
     }
   }
 
+  property ForwardRunSlot fwdRun {
+    public get() {
+      return data.fwdRunArray.getValue(view_as<int>(this));
+    }
+
+    public set(ForwardRunSlot fwdRun) {
+      data.fwdRunArray.setValue(view_as<int>(this), fwdRun);
+    }
+  }
+
   public ClassID(char[] name) {
     ClassID classID = view_as<ClassID>(new NamedSlotID(name));
 
@@ -29,6 +39,7 @@ methodmap ClassID __nullable__ < NamedSlotID {
 
     classID.fwdEnable = new ForwardEnableSlotID();
     classID.fwdDisable = new ForwardDisableSlotID();
+    classID.fwdRun = new ForwardRunSlot();
 
     return classID;
   }
@@ -37,8 +48,10 @@ methodmap ClassID __nullable__ < NamedSlotID {
     NamedSlotID namedSlot = this;
     this.fwdEnable.remove();
     this.fwdDisable.remove();
+    this.fwdRun.remove();
     this.fwdEnable = null;
     this.fwdDisable = null;
+    this.fwdRun = null;
     namedSlot.remove();
   }
 };

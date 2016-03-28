@@ -10,6 +10,10 @@ typeset ClassDisableCB {
   function void (ClassID classID, int client);
 };
 
+typeset ClassRunCB {
+  function void (ClassID classID, int client);
+};
+
 methodmap ClassID __nullable__ {
   public native ClassID(char[] name);
 
@@ -36,6 +40,12 @@ methodmap ClassID __nullable__ {
   public native void sendEnable(int client);
 
   public native void sendDisable(int client);
+
+  public native bool hookRun(ClassRunCB callback);
+
+  public native bool unhookRun(ClassRunCB callback);
+
+  public native void sendRun(int client);
 };
 
 typeset ClassCreateCB {

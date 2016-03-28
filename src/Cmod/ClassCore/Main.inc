@@ -18,6 +18,9 @@ void classCoreNative() {
   CreateNative("ClassID.unhookDisable", native_ClassID_unhookDisable);
   CreateNative("ClassID.sendEnable", native_ClassID_sendEnable);
   CreateNative("ClassID.sendDisable", native_ClassID_sendDisable);
+  CreateNative("ClassID.hookRun", native_ClassID_hookRun);
+  CreateNative("ClassID.unhookRun", native_ClassID_unhookRun);
+  CreateNative("ClassID.sendRun", native_ClassID_sendRun);
 
   CreateNative("CmodClass.hookCreateClass", native_CmodClass_hookCreateClass)
   CreateNative("CmodClass.unhookCreateClass", native_CmodClass_unhookCreateClass)
@@ -108,6 +111,21 @@ public int native_ClassID_sendEnable(Handle plugin, int numParams) {
 public int native_ClassID_sendDisable(Handle plugin, int numParams) {
   ClassID classID = GetNativeCell(1);
   classID.fwdDisable.send(classID, GetNativeCell(2));
+}
+
+public int native_ClassID_hookRun(Handle plugin, int numParams) {
+  ClassID classID = GetNativeCell(1);
+  return classID.fwdRun.hook(plugin, GetNativeCell(2));
+}
+
+public int native_ClassID_unhookRun(Handle plugin, int numParams) {
+  ClassID classID = GetNativeCell(1);
+  return classID.fwdRun.unhook(plugin, GetNativeCell(2));
+}
+
+public int native_ClassID_sendRun(Handle plugin, int numParams) {
+  ClassID classID = GetNativeCell(1);
+  classID.fwdRun.send(classID, GetNativeCell(2));
 }
 
 public int native_CmodClass_hookCreateClass(Handle plugin, int numParams) {
