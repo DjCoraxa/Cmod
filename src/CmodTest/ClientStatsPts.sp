@@ -17,13 +17,18 @@ public Action cmd_cmodtest_clientstatspts(int client, int argc) {
   StatsID stats = new StatsID("happy");
   PrintToServer("StatsID stats = new StatsID(\"happy\")");
   PrintToServer("cmodClient.getStatsPts(stats) return %d", cmodClient.getStatsPts(stats));
+  cmodClient.setStatsPts(stats, 12);
   PrintToServer("cmodClient.setStatsPts(stats, 12)")
   PrintToServer("cmodClient.getStatsPts(stats) return %d", cmodClient.getStatsPts(stats));
 
   PrintToServer("cmodClient.getStatsAllPts(stats) return %d", cmodClient.getStatsAllPts(stats));
+  cmodClient.setStatsPts(stats, 123, ClientPts_Bonus);
   PrintToServer("cmodClient.setStatsPts(stats, 123, ClientPts_Bonus)");
   PrintToServer("cmodClient.getStatsAllPts(stats) return %d", cmodClient.getStatsAllPts(stats));
-
+  cmodClient.recalculateStatsAllPts(stats);
+  PrintToServer("cmodClient.recalculateStatsAllPts(stats)");
+  PrintToServer("cmodClient.getStatsAllPts(stats) return %d", cmodClient.getStatsAllPts(stats));
+  
   PrintToServer("cmodClient.getStatsPts(stats) return %d", cmodClient.getStatsPts(stats));
   PrintToServer("cmodClient.freeStatsPts return %d", cmodClient.freeStatsPts);
   PrintToServer("cmodClient.spendStatsPts(stats, 3) return %d", cmodClient.spendStatsPts(stats, 3));

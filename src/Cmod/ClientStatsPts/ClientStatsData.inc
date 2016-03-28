@@ -7,7 +7,7 @@ methodmap ClientStatsData __nullable__ {
     for (int type = 0; type < view_as<int>(ClientPts_Count); ++type)
       statsPtsArray[type] = new DataArray(MAXPLAYERS + 1);
 
-    clientAllPtsArray - new DataArray(MAXPLAYERS + 1);
+    clientAllPtsArray = new DataArray(MAXPLAYERS + 1);
   }
 
   property DataArray clientAllPtsArray {

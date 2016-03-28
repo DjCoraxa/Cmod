@@ -1,7 +1,20 @@
 static ClientStatsData data;
 
+static CmodStats cmodStats;
+
 void clientStatsPtsStart() {
   data = new ClientStatsData();
+  cmodStats.hookCreateStats(onStatsCreate);
+}
+
+public void onStatsCreate(StatsID statsID) {
+  for (ClientStats client = 0; client < view_as<ClientStats>(MAXPLAYERS + 1); ++client) {
+    for (ClientPtsType type = ClientPts_General; type < ClientPts_Count; ++type)
+      client.setPts(statsID, 0, type);
+
+    client.setAllPts(statsID, 0);
+    client.recalculateAllPts(statsID);
+  }
 }
 
 void clientStatsPtsNative() {
@@ -33,7 +46,7 @@ public int native_Client_getStatsPts(Handle plugin, int numParams) {
 
 public int native_Client_setStatsPts(Handle plugin, int numParams) {
   ClientStats client = GetNativeCell(1);
-  client.setPts(GetNativeCell(2), GetNativeCell(4), GetNativeCell(3));
+  client.setPts(GetNativeCell(2), GetNativeCell(3), GetNativeCell(4));
 }
 
 public int native_Client_getStatsAllPts(Handle plugin, int numParams) {

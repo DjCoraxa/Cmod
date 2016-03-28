@@ -15,7 +15,7 @@ methodmap ClientStats {
     return data.getStatsPtsArray(type).getValue(view_as<int>(statsID), view_as<int>(this));
   }
 
-  public void setPts(StatsID statsID, ClientPtsType type, int value) {
+  public void setPts(StatsID statsID, int value, ClientPtsType type) {
     data.getStatsPtsArray(type).setValue(view_as<int>(statsID), value, view_as<int>(this));
   }
 
@@ -36,11 +36,11 @@ methodmap ClientStats {
   }
 
   public bool spendPts(StatsID statsID, int pts) {
-    if (0 > pts > this.freePts)
+    if (0 > pts || pts > this.freePts)
       return false;
 
     this.freePts -= pts;
-    this.setPts(statsID, ClientPts_General, this.getPts(statsID, ClientPts_General) + pts);
+    this.setPts(statsID, this.getPts(statsID, ClientPts_General) + pts, ClientPts_General);
     this.recalculateAllPts(statsID);
 
     return true;
@@ -48,7 +48,7 @@ methodmap ClientStats {
 
   public void resetPts(StatsID statsID) {
     this.freePts += this.getPts(statsID, ClientPts_General);
-    this.setPts(statsID, ClientPts_General, 0);
+    this.setPts(statsID, 0, ClientPts_General);
   }
 
   public void resetAllPts() {
