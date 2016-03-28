@@ -9,3 +9,4 @@
 #include <cmod/Stats>
 #include <cmod/Skill>
 #include <cmod/PreparedSkill>
+#include <cmod/Client>
