@@ -1,6 +1,5 @@
 enum ClientPtsType {
-  ClientPts_All = 0,
-  ClientPts_General,
+  ClientPts_General = 0,
   ClientPts_Class,
   ClientPts_Item,
   ClientPts_Skill,
