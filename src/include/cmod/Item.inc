@@ -10,6 +10,10 @@ typeset ItemDisableCB {
   function void (ItemID itemID, int client);
 };
 
+typeset ItemRunCB {
+  function void (ItemID itemID, int client);
+};
+
 methodmap ItemID __nullable__ {
   public native ItemID(char[] name);
 
@@ -36,6 +40,12 @@ methodmap ItemID __nullable__ {
   public native void sendEnable(int client);
 
   public native void sendDisable(int client);
+
+  public native bool hookRun(ItemRunCB callback);
+
+  public native bool unhookRun(ItemRunCB callback);
+
+  public native void sendRun(int client);
 };
 
 typeset ItemCreateCB {

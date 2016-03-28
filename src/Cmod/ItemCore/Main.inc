@@ -18,6 +18,9 @@ void itemCoreNative() {
   CreateNative("ItemID.unhookDisable", native_ItemID_unhookDisable);
   CreateNative("ItemID.sendEnable", native_ItemID_sendEnable);
   CreateNative("ItemID.sendDisable", native_ItemID_sendDisable);
+  CreateNative("ItemID.hookRun", native_ItemID_hookRun);
+  CreateNative("ItemID.unhookRun", native_ItemID_unhookRun);
+  CreateNative("ItemID.sendRun", native_ItemID_sendRun);
 
   CreateNative("CmodItem.hookCreateItem", native_CmodItem_hookCreateItem)
   CreateNative("CmodItem.unhookCreateItem", native_CmodItem_unhookCreateItem)
@@ -108,6 +111,21 @@ public int native_ItemID_sendEnable(Handle plugin, int numParams) {
 public int native_ItemID_sendDisable(Handle plugin, int numParams) {
   ItemID itemID = GetNativeCell(1);
   itemID.fwdDisable.send(itemID, GetNativeCell(2));
+}
+
+public int native_ItemID_hookRun(Handle plugin, int numParams) {
+  ItemID itemID = GetNativeCell(1);
+  return itemID.fwdRun.hook(plugin, GetNativeCell(2));
+}
+
+public int native_ItemID_unhookRun(Handle plugin, int numParams) {
+  ItemID itemID = GetNativeCell(1);
+  return itemID.fwdRun.unhook(plugin, GetNativeCell(2));
+}
+
+public int native_ItemID_sendRun(Handle plugin, int numParams) {
+  ItemID itemID = GetNativeCell(1);
+  itemID.fwdRun.send(itemID, GetNativeCell(2));
 }
 
 public int native_CmodItem_hookCreateItem(Handle plugin, int numParams) {

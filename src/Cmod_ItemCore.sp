@@ -21,6 +21,7 @@
 #include "Cmod/ItemCore/Enum/ItemID"
 #include "Cmod/ItemCore/Forward/ForwardEnableSlotID"
 #include "Cmod/ItemCore/Forward/ForwardDisableSlotID"
+#include "Cmod/ItemCore/Forward/ForwardRunSlot"
 #include "Cmod/ItemCore/ItemData"
 #include "Cmod/ItemCore/ItemID"
 
