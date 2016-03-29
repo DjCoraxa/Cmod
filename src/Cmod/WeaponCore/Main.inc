@@ -1,7 +1,30 @@
 static WeaponData data;
+static WeaponMan weaponMan;
 
 void weaponCoreStart() {
   data = new WeaponData();
+}
+
+public void OnClientConnected(int client) {
+  WeaponClient weaponClient = view_as<WeaponClient>(client);
+  weaponClient.clear();
+}
+
+public void OnClientPutInServer(int client) {
+  SDKHook(client, SDKHook_WeaponCanUse, onWeaponCanUse);
+}
+
+public void OnClientDisconnect(int client) {
+  SDKUnhook(client, SDKHook_WeaponCanUse, onWeaponCanUse);
+}
+
+public Action onWeaponCanUse(int client, int weapon) {
+  WeaponClient weaponClient = view_as<WeaponClient>(client);
+  char[] weaponName = new char[MAX_WEAPON_NAME_LENGTH + 1];
+  GetEdictClassname(weapon, weaponName, MAX_WEAPON_NAME_LENGTH);
+  if (weaponClient.checkWeaponPermByName(weaponName))
+    return Plugin_Continue;
+  return Plugin_Handled;
 }
 
 void weaponCoreNative() {
