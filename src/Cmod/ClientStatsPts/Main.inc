@@ -3,7 +3,7 @@ static ClientStatsData data;
 static CmodStats cmodStats;
 
 void clientStatsPtsStart() {
-  data = new ClientStatsData();
+  //data = new ClientStatsData();
   cmodStats.hookCreateStats(onStatsCreate);
 }
 
@@ -18,6 +18,8 @@ public void onStatsCreate(StatsID statsID) {
 }
 
 void clientStatsPtsNative() {
+  data = new ClientStatsData();
+
   CreateNative("Client.freeStatsPts.get", native_Client_freeStatsPts_get);
   CreateNative("Client.freeStatsPts.set", native_Client_freeStatsPts_set);
   CreateNative("Client.getStatsPts", native_Client_getStatsPts);

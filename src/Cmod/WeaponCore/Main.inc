@@ -2,7 +2,7 @@ static WeaponData data;
 static WeaponMan weaponMan;
 
 void weaponCoreStart() {
-  data = new WeaponData();
+  // data = new WeaponData();
 }
 
 public void OnClientConnected(int client) {
@@ -40,6 +40,8 @@ public Action onWeaponCanUse(int client, int weapon) {
 }
 
 void weaponCoreNative() {
+  data = new WeaponData();
+  
   CreateNative("Client.allowWeapon", native_Client_allowWeapon);
   CreateNative("Client.denyWeapon", native_Client_denyWeapon);
   CreateNative("Client.setWeaponRank", native_Client_setWeaponRank);

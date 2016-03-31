@@ -2,7 +2,7 @@
 static ExpData data;
 
 void expCoreStart() {
-  data = new ExpData();
+  //data = new ExpData();
 
   #if defined RESERVE_EXPID_FOR_CLIENTS
     int maxLvl = data.cvarDefaultMaxLvl.IntValue;
@@ -15,6 +15,8 @@ void expCoreStart() {
 }
 
 void expCoreNative() {
+  data = new ExpData();
+  
   CreateNative("CmodExp.hookCreateExpID", native_CmodExp_hookCreateExpID);
   CreateNative("CmodExp.unhookCreateExpID", native_CmodExp_unhookCreateExpID);
   CreateNative("CmodExp.hookRemoveExpID", native_CmodExp_hookRemoveExpID);
