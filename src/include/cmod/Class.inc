@@ -75,7 +75,7 @@ methodmap CmodClass {
 
   public native ClassID getIDByName(char[] name);
 
-  property int maxID {
+  property ClassID maxID {
     public native get();
   }
 }
