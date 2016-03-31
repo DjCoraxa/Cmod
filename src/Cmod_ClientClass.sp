@@ -14,7 +14,7 @@ void setClientClass(int client, ClassID classID) {
   if (clientClass[client].isValid())
     clientClass[client].sendDisable(client);
 
-  clientClass[client] = classID
+  clientClass[client] = classID;
 
   if (clientClass[client].isValid())
     classID.sendEnable(client);

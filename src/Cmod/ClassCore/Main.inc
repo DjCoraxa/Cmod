@@ -31,6 +31,7 @@ void classCoreNative() {
   CreateNative("CmodClass.maxNameLength.get", native_CmodClass_maxNameLength_get);
   CreateNative("CmodClass.maxDescLength.get", native_CmodClass_maxDescLength_get);
   CreateNative("CmodClass.getIDByName", native_CmodClass_getIDByName);
+  CreateNative("CmodClass.maxID.get", native_CmodClass_maxID_get);
 }
 
 public int native_ClassID_ClassID(Handle plugin, int numParams) {
@@ -158,4 +159,8 @@ public int native_CmodClass_getIDByName(Handle plugin, int numParams) {
   char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
   GetNativeString(1, name, MAX_SLOT_NAME_LENGTH);
   return data.nameArray.findString(name);
+}
+
+public int native_CmodClass_maxID_get(Handle plugin, int numParams) {
+  return data.slotArray.length;
 }

@@ -74,4 +74,8 @@ methodmap CmodClass {
   public native bool unhookRemoveClass(ClassRemoveCB callback);
 
   public native ClassID getIDByName(char[] name);
+
+  property int maxID {
+    public native get();
+  }
 }
