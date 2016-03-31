@@ -1,10 +1,12 @@
 static ClassData data;
 
 void classCoreStart() {
-  data = new ClassData();
+  //data = new ClassData();
 }
 
 void classCoreNative() {
+  data = new ClassData();
+
   CreateNative("ClassID.ClassID", native_ClassID_ClassID);
   CreateNative("ClassID.remove", native_ClassID_remove);
   CreateNative("ClassID.isValid", native_ClassID_isValid);
