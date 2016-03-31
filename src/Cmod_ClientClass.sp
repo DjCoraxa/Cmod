@@ -10,15 +10,14 @@ public void OnClientDisconnect(int client) {
   clientClass[client] = ClassID_Invalid;
 }
 
-bool setClientClass(int client, ClassID classID) {
-  if (!classID.isValid())
-    return false;
-
+void setClientClass(int client, ClassID classID) {
   if (clientClass[client].isValid())
     clientClass[client].sendDisable(client);
 
-  classID.sendEnable(client);
-  return true;
+  clientClass[client] = classID
+
+  if (clientClass[client].isValid())
+    classID.sendEnable(client);
 }
 
 ClassID getClientClass(int client) {
@@ -36,5 +35,5 @@ public native_Client_getClass(Handle plugin, int numParams) {
 }
 
 public native_Client_setClass(Handle plugin, int numParams) {
-  return setClientClass(GetNativeCell(1), GetNativeCell(2));
+  setClientClass(GetNativeCell(1), GetNativeCell(2));
 }

@@ -52,5 +52,5 @@ methodmap Client {
 
   public native ClassID getClass();
 
-  public native bool setClass(ClassID classID);
+  public native void setClass(ClassID classID);
 };
