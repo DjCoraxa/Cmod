@@ -47,4 +47,10 @@ methodmap Client {
   public native void resetStatsPts(StatsID statsID);
 
   public native void resetAllStatsPts();
+
+  // From Cmod_ClientClass
+
+  public native ClassID getClass();
+
+  public native bool setClass(ClassID classID);
 };
