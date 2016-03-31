@@ -11,11 +11,23 @@ public void OnClientConnected(int client) {
 }
 
 public void OnClientPutInServer(int client) {
+  WeaponClient weaponClient = view_as<WeaponClient>(client);
+  weaponClient.clear();
+  SDKHook(client, SDKHook_SpawnPost, onSpawn);
   SDKHook(client, SDKHook_WeaponCanUse, onWeaponCanUse);
 }
 
 public void OnClientDisconnect(int client) {
+  SDKUnhook(client, SDKHook_SpawnPost, onSpawn);
   SDKUnhook(client, SDKHook_WeaponCanUse, onWeaponCanUse);
+}
+
+public void onSpawn(int entity) {
+  if (!(0 < entity <= MaxClients) || !IsClientInGame(entity) || !IsPlayerAlive(entity))
+    return;
+
+  WeaponClient weaponClient = view_as<WeaponClient>(entity);
+  weaponClient.giveWeapons();
 }
 
 public Action onWeaponCanUse(int client, int weapon) {
@@ -79,7 +91,7 @@ public native_Client_getWeaponRank(Handle plugin, int numParams) {
 
   Weapon weaponID = new Weapon(weapon);
 
-  client.getWeaponRank(weaponID);
+  return client.getWeaponRank(weaponID);
 }
 
 public native_Client_addWeaponToGiveList(Handle plugin, int numParams) {

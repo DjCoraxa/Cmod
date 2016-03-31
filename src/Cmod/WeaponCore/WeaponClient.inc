@@ -1,5 +1,4 @@
 static WeaponData data;
-static WeaponMan man;
 
 methodmap WeaponClient __nullable__ {
   public int getWeaponRank(Weapon weaponID) {
@@ -43,8 +42,9 @@ methodmap WeaponClient __nullable__ {
     return view_as<bool>(data.cvarMode.IntValue);
   }
 
-  public bool checkWeaponPermByName(char[] weapon) {
-    return this.checkWeaponPerm(view_as<Weapon>(man.getWeaponIndex(weapon)));
+  public bool checkWeaponPermByName(char[] weaponName) {
+    Weapon weapon = new Weapon(weaponName);
+    return this.checkWeaponPerm(weapon);
   }
 
   public void clear() {

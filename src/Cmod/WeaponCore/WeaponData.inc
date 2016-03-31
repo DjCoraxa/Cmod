@@ -4,7 +4,6 @@ static SlotArray weaponRankArray;
 static DataArray weaponGiveRankArray;
 static DataArray weaponNameArray;
 
-
 methodmap WeaponData __nullable__ {
   public WeaponData() {
     cvarMode = CreateConVar("cmodweapon_mode", "1", "0 - Client can use only allow weapons, other - Client can use all weapons without deny");
@@ -34,7 +33,7 @@ methodmap WeaponData __nullable__ {
 
   property DataArray weaponNameArray {
     public get() {
-      return weaponRankArray;
+      return weaponNameArray;
     }
   }
 
