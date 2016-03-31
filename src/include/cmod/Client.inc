@@ -53,4 +53,10 @@ methodmap Client {
   public native ClassID getClass();
 
   public native void setClass(ClassID classID);
+
+  // From Cmod_ClientItem
+
+  public native ItemID getItem();
+
+  public native void setItem(ItemID itemID);
 };
