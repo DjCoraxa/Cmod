@@ -54,4 +54,8 @@ methodmap CmodStats {
   public native bool unhookRemoveStats(StatsRemoveCB callback);
 
   public native StatsID getIDByName(char[] name);
-}
+
+  property StatsID maxID {
+    public native get();
+  }
+};

@@ -6,7 +6,7 @@ void statsCoreStart() {
 
 void statsCoreNative() {
   data = new StatsData();
-  
+
   CreateNative("StatsID.StatsID", native_StatsID_StatsID);
   CreateNative("StatsID.remove", native_StatsID_remove);
   CreateNative("StatsID.isValid", native_StatsID_isValid);
@@ -25,6 +25,7 @@ void statsCoreNative() {
   CreateNative("CmodStats.maxNameLength.get", native_CmodStats_maxNameLength_get);
   CreateNative("CmodStats.maxDescLength.get", native_CmodStats_maxDescLength_get);
   CreateNative("CmodStats.getIDByName", native_CmodStats_getIDByName);
+  CreateNative("CmodStats.maxID.get", native_CmodStats_maxID_get);
 }
 
 public int native_StatsID_StatsID(Handle plugin, int numParams) {
@@ -122,4 +123,8 @@ public int native_CmodStats_getIDByName(Handle plugin, int numParams) {
   char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
   GetNativeString(1, name, MAX_SLOT_NAME_LENGTH);
   return data.nameArray.findString(name);
+}
+
+public int native_CmodStats_maxID_get(Handle plugin, int numParams) {
+  return data.slotArray.length;
 }
