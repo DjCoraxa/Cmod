@@ -5,9 +5,13 @@ static CmodStats cmodStats;
 void clientStatsPtsStart() {
   //data = new ClientStatsData();
   cmodStats.hookCreateStats(onStatsCreate);
+  onStatsCreate(0);
 }
 
 public void onStatsCreate(StatsID statsID) {
+  if (!statsID.isValid())
+    return;
+
   for (ClientStats client = 0; client < view_as<ClientStats>(MAXPLAYERS + 1); ++client) {
     for (ClientPtsType type = ClientPts_General; type < ClientPts_Count; ++type)
       client.setPts(statsID, 0, type);
