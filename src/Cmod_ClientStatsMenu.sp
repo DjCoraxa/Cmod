@@ -20,6 +20,8 @@ public Action cmd_showStatsMenu(int client, int argc) {
 
   Client cmodClient = view_as<Client>(client);
 
+  menu.SetTitle("Stats menu (%d pts)", cmodClient.freeStatsPts);
+
   int maxNameLength = cmodStats.maxNameLength;
   int finnalyStatsNameLength = maxNameLength + 32;
 
@@ -43,13 +45,14 @@ public Action cmd_showStatsMenu(int client, int argc) {
 }
 
 public int handler(Menu menu, MenuAction action, int param1, int param2) {
-/*  if (action == MenuAction_Select){
+  if (action == MenuAction_Select){
     Client client = view_as<Client>(param1);
     char[] info = new char[32];
     menu.GetItem(param2, info, 31)
-    ClassID classID = view_as<ClassID>(StringToInt(info));
-    client.setClass(classID);
+    StatsID statsID = view_as<StatsID>(StringToInt(info));
+    if (client.spendStatsPts(statsID, 1))
+      cmd_showStatsMenu(param1, 0);
 	} else if (action == MenuAction_End) {
 		menu.Close()
-	}*/
+	}
 }
