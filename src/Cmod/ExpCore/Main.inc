@@ -3,20 +3,11 @@ static ExpData data;
 
 void expCoreStart() {
   //data = new ExpData();
-
-  #if defined RESERVE_EXPID_FOR_CLIENTS
-    int maxLvl = data.cvarDefaultMaxLvl.IntValue;
-    int ratio = data.cvarDefaultRatio.IntValue;
-
-    for (int client = 0; client < MAXPLAYERS; client++) {
-      ExpID expID = new ExpID(maxLvl, ratio);
-    }
-  #endif
 }
 
 void expCoreNative() {
   data = new ExpData();
-  
+
   CreateNative("CmodExp.hookCreateExpID", native_CmodExp_hookCreateExpID);
   CreateNative("CmodExp.unhookCreateExpID", native_CmodExp_unhookCreateExpID);
   CreateNative("CmodExp.hookRemoveExpID", native_CmodExp_hookRemoveExpID);

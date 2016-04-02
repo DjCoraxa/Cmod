@@ -7,6 +7,11 @@ enum ClientPtsType {
   ClientPts_Count
 };
 
+enum Client {
+  Client_Invalid = -1,
+  Client_Server = 0
+};
+
 
 methodmap Client {
   // From Cmod_WeaponCore
@@ -59,4 +64,16 @@ methodmap Client {
   public native ItemID getItem();
 
   public native void setItem(ItemID itemID);
+
+  // From Cmod_ClientExp
+
+  property ExpID expID {
+    public native get();
+  }
+};
+
+methodmap CmodClient {
+  // From Cmod_ClientExp
+
+  public native Client getClientByExpID(ExpID expID);
 };
