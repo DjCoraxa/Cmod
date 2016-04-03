@@ -2,6 +2,7 @@ static ItemData data;
 
 void itemCoreStart() {
   data = new ItemData();
+  RegPluginLibrary("Cmod_ItemCore");
 }
 
 void itemCoreNative() {

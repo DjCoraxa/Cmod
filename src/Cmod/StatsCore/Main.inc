@@ -2,6 +2,7 @@ static StatsData data;
 
 void statsCoreStart() {
   data = new StatsData();
+  RegPluginLibrary("Cmod_StatsCore");
 }
 
 void statsCoreNative() {

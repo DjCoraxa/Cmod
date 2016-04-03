@@ -3,6 +3,7 @@ static WeaponMan weaponMan;
 
 void weaponCoreStart() {
   data = new WeaponData();
+  RegPluginLibrary("Cmod_WeaponCore");
 }
 
 public void OnClientConnected(int client) {

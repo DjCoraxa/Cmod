@@ -2,6 +2,7 @@ static SkillData data;
 
 void skillCoreStart() {
   data = new SkillData();
+  RegPluginLibrary("Cmod_SkillCore");
 }
 
 void skillCoreNative() {

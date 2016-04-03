@@ -1,8 +1,8 @@
-
 static ExpData data;
 
 void expCoreStart() {
   data = new ExpData();
+  RegPluginLibrary("Cmod_ExpCore");
 }
 
 void expCoreNative() {

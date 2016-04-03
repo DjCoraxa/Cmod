@@ -2,6 +2,7 @@ static ClassData data;
 
 void classCoreStart() {
   data = new ClassData();
+  RegPluginLibrary("Cmod_ClassCore");
 }
 
 void classCoreNative() {
