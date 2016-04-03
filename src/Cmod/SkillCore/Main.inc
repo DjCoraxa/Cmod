@@ -1,12 +1,10 @@
 static SkillData data;
 
 void skillCoreStart() {
-  //data = new SkillData();
+  data = new SkillData();
 }
 
 void skillCoreNative() {
-  data = new SkillData();
-  
   CreateNative("SkillID.SkillID", native_SkillID_SkillID);
   CreateNative("SkillID.remove", native_SkillID_remove);
   CreateNative("SkillID.isValid", native_SkillID_isValid);

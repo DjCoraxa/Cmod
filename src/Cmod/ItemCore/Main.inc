@@ -1,12 +1,10 @@
 static ItemData data;
 
 void itemCoreStart() {
-  //data = new ItemData();
+  data = new ItemData();
 }
 
 void itemCoreNative() {
-  data = new ItemData();
-
   CreateNative("ItemID.ItemID", native_ItemID_ItemID);
   CreateNative("ItemID.remove", native_ItemID_remove);
   CreateNative("ItemID.isValid", native_ItemID_isValid);

@@ -3,8 +3,8 @@ static SkillCFGData skillData;
 static CmodSkill cmodSkill;
 
 void preparedSkillStart() {
-  //data = new PreparedSkillData();
-  //skillData = new SkillCFGData();
+  data = new PreparedSkillData();
+  skillData = new SkillCFGData();
 
   cmodSkill.hookCreateSkill(onCreateSkill);
   cmodSkill.hookRemoveSkill(onRemoveSkill);
@@ -20,9 +20,6 @@ public void onRemoveSkill(SkillID skillID) {
 }
 
 void preparedSkillNative() {
-  data = new PreparedSkillData();
-  skillData = new SkillCFGData();
-
   CreateNative("PreparedSkill.PreparedSkill", native_PreparedSkill_PreparedSkill);
   CreateNative("PreparedSkill.remove", native_PreparedSkill_remove);
   CreateNative("PreparedSkill.isValid", native_PreparedSkill_isValid);

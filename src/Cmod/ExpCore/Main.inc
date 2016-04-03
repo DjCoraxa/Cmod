@@ -2,12 +2,10 @@
 static ExpData data;
 
 void expCoreStart() {
-  //data = new ExpData();
+  data = new ExpData();
 }
 
 void expCoreNative() {
-  data = new ExpData();
-
   CreateNative("CmodExp.hookCreateExpID", native_CmodExp_hookCreateExpID);
   CreateNative("CmodExp.unhookCreateExpID", native_CmodExp_unhookCreateExpID);
   CreateNative("CmodExp.hookRemoveExpID", native_CmodExp_hookRemoveExpID);

@@ -1,12 +1,10 @@
 static StatsData data;
 
 void statsCoreStart() {
-  //data = new StatsData();
+  data = new StatsData();
 }
 
 void statsCoreNative() {
-  data = new StatsData();
-
   CreateNative("StatsID.StatsID", native_StatsID_StatsID);
   CreateNative("StatsID.remove", native_StatsID_remove);
   CreateNative("StatsID.isValid", native_StatsID_isValid);
