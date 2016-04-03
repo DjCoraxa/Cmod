@@ -28,8 +28,9 @@
 
 #include "Cmod/PreparedSkill/Main"
 
-public void OnPluginStart() {
-  preparedSkillStart();
+public void OnLibraryAdded(const char[] name) {
+  if (StrEqual(name, "Cmod_SkillCore"))
+    preparedSkillStart();
 }
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max) {
