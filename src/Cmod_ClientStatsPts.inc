@@ -11,8 +11,9 @@
 
 #include "Cmod/ClientStatsPts/Main.inc"
 
-public void OnPluginStart() {
-  clientStatsPtsStart();
+public void OnLibraryAdded(const char[] name) {
+  if (StrEqual(name, "Cmod_StatsCore"))
+    clientStatsPtsStart();
 }
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max) {
