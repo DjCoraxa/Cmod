@@ -3,7 +3,11 @@
 
 static StatsID statsID;
 
-public void OnPluginStart() {
+public void OnAllPluginsLoaded() {
   statsID = new StatsID("Inteligence");
   statsID.setDesc("Increse skill effect");
+}
+
+public void OnPluginEnd() {
+  statsID.remove();
 }
