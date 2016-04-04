@@ -3,7 +3,7 @@
 
 ClassID testClass;
 
-public void OnPluginStart() {
+public void OnAllPluginsLoaded() {
   testClass = new ClassID("ClientClassTest");
   testClass.hookEnable(onClassEnable);
   testClass.hookDisable(onClassDisable);
