@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <sdkhooks>
 #include <cmod/Stats>
 
 #include "Cmod/ClientStatsPts/Config.inc"

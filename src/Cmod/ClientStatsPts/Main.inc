@@ -5,7 +5,23 @@ static CmodStats cmodStats;
 void clientStatsPtsStart() {
   data = new ClientStatsData();
   cmodStats.hookCreateStats(onStatsCreate);
-  onStatsCreate(0);
+}
+
+public void OnClientPutInServer(int client) {
+  SDKHook(client, SDKHook_SpawnPost, onSpawn);
+}
+
+public void OnClientDisconnect(int client) {
+  SDKUnhook(client, SDKHook_SpawnPost, onSpawn);
+}
+
+public void onSpawn(int client) {
+  int maxID = cmodStats.maxID;
+  ClientStats clientStats = client;
+  for (StatsID statsID = view_as<StatsID>(0); statsID < maxID; ++statsID) {
+    statsID.sendActivate(client, clientStats.getAllPts(statsID));
+    PrintToChat(client, "Stats %d points %d", statsID, clientStats.getAllPts(statsID))
+  }
 }
 
 public void onStatsCreate(StatsID statsID) {
