@@ -1,10 +1,11 @@
 static ClientStatsData data;
-
 static CmodStats cmodStats;
+static bool isStatsLoaded = false;
 
 void clientStatsPtsStart() {
   data = new ClientStatsData();
   cmodStats.hookCreateStats(onStatsCreate);
+  isStatsLoaded = true;
 }
 
 public void OnClientPutInServer(int client) {
@@ -16,6 +17,9 @@ public void OnClientDisconnect(int client) {
 }
 
 public void onSpawn(int client) {
+  if (isStatsLoaded)
+    return
+
   int maxID = cmodStats.maxID;
   ClientStats clientStats = client;
   for (StatsID statsID = view_as<StatsID>(0); statsID < maxID; ++statsID) {
