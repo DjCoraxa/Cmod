@@ -1,6 +1,7 @@
 #include <sourcemod>
 #include <cmod/version>
 #include <cmod/Exp>
+#include <cmod/Class>
 
 #include "Cmod/Client/ClientData"
 #include "Cmod/Client/LibraryMan"
@@ -33,6 +34,11 @@ public void OnClientPutInServer(int client) {
   cmodClient.onPutInServer();
 }
 
+public void OnClientDisconnect(int client) {
+  Client cmodClient = view_as<Client>(client);
+  cmodClient.onDisconnect();
+}
+
 public void OnClientDisconnect_Post(int client) {
   Client cmodClient = view_as<Client>(client);
   cmodClient.onDisconnectPost();
@@ -44,6 +50,9 @@ public void OnLibraryAdded(const char[] name) {
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max) {
   CreateNative("ClientID.expID.get", native_ClientID_expID_get);
+  CreateNative("ClientID.getClass", native_ClientID_getClass);
+  CreateNative("ClientID.setClass", native_ClientID_setClass);
+
   CreateNative("CmodClient.getClientByExpID", native_CmodClient_getClientByExpID);
   return APLRes_Success;
 }
@@ -51,6 +60,16 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 public int native_ClientID_expID_get(Handle plugin, int numParams) {
   Client client = GetNativeCell(1);
   return view_as<int>(client.expID);
+}
+
+public native_ClientID_getClass(Handle plugin, int numParams) {
+  Client client = GetNativeCell(1);
+  return view_as<int>(client.getClass());
+}
+
+public native_ClientID_setClass(Handle plugin, int numParams) {
+  Client client = GetNativeCell(1);
+  client.setClass(GetNativeCell(2));
 }
 
 public int native_CmodClient_getClientByExpID(Handle plugin, int numParams) {
