@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <cmod/version>
 
 #include "Cmod/ItemCore/Config"
 
@@ -27,6 +28,13 @@
 
 #include "Cmod/ItemCore/Main"
 
+public Plugin myinfo = {
+  name = "Cmod_ItemCore",
+  author = "plx211",
+  description = "Base item mangament system",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 public OnPluginStart() {
   itemCoreStart();

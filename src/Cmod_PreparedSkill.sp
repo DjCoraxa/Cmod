@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <cmod/version>
 #include <cmod/Skill>
 
 #include "Cmod/PreparedSkill/Config"
@@ -27,6 +28,14 @@
 #include "Cmod/PreparedSkill/PreparedSkill"
 
 #include "Cmod/PreparedSkill/Main"
+
+public Plugin myinfo = {
+  name = "Cmod_PreparedSkill",
+  author = "plx211",
+  description = "Prepared Skill system",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 public void OnLibraryAdded(const char[] name) {
   if (StrEqual(name, "Cmod_SkillCore"))

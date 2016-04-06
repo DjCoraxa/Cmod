@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <cmod/version>
 
 #include "Cmod/SkillCore/Config"
 
@@ -24,6 +25,13 @@
 
 #include "Cmod/SkillCore/Main"
 
+public Plugin myinfo = {
+  name = "Cmod_SkillCore",
+  author = "plx211",
+  description = "Base skill mangament system",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 public OnPluginStart() {
   skillCoreStart();

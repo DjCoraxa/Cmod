@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <cmod/version>
 
 #include "Cmod/ClassCore/Config"
 
@@ -27,6 +28,13 @@
 
 #include "Cmod/ClassCore/Main"
 
+public Plugin myinfo = {
+  name = "Cmod_ClassCore",
+  author = "plx211",
+  description = "Base class mangament system",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 public OnPluginStart() {
   classCoreStart();

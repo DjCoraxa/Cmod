@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <cmod/version>
 
 #include <cmod/Enum/EnumBase>
 
@@ -23,6 +24,13 @@
 
 #include "Cmod/ExpCore/Main"
 
+public Plugin myinfo = {
+  name = "Cmod_ExpCore",
+  author = "plx211",
+  description = "Base exp mangament system",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 public OnPluginStart() {
   expCoreStart();

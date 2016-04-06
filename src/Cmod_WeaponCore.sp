@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <cmod/version>
 #include <sdktools>
 #include <sdkhooks>
 
@@ -16,6 +17,14 @@
 #include "Cmod/WeaponCore/WeaponClient"
 
 #include "Cmod/WeaponCore/Main"
+
+public Plugin myinfo = {
+  name = "Cmod_WeaponCore",
+  author = "plx211",
+  description = "Base weapon mangament system",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 public void OnPluginStart() {
   weaponCoreStart();

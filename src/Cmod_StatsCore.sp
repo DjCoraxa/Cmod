@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <cmod/version>
 
 #include "Cmod/StatsCore/Config"
 
@@ -25,6 +26,13 @@
 
 #include "Cmod/StatsCore/Main"
 
+public Plugin myinfo = {
+  name = "Cmod_StatsCore",
+  author = "plx211",
+  description = "Base stats mangament system",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 public OnPluginStart() {
   statsCoreStart();
