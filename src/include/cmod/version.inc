@@ -1,4 +1,4 @@
 #tryinclude <cmod/auto_version>
-#ifndef PLUGIN_VERSION
-  #define PLUGIN_VERSION "1.1.0-alpha-manual"
+#ifndef CMOD_PLUGIN_VERSION
+  #define CMOD_PLUGIN_VERSION "1.1.0-manual"
 #endif
