@@ -7,13 +7,14 @@ enum ClientPtsType {
   ClientPts_Count
 };
 
-enum Client {
-  Client_Invalid = -1,
-  Client_Server = 0
+enum ClientID {
+  ClientID_Invalid = -1,
+  ClientID_Server = 0,
+  ClientID_Max = MAXPLAYERS
 };
 
 
-methodmap Client {
+methodmap ClientID {
   // From Cmod_WeaponCore
 
   public native void allowWeapon(char[] weapon);
