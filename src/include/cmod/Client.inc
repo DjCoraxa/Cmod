@@ -76,5 +76,5 @@ methodmap ClientID {
 methodmap CmodClient {
   // From Cmod_ClientExp
 
-  public native Client getClientByExpID(ExpID expID);
+  public native ClientID getClientByExpID(ExpID expID);
 };
