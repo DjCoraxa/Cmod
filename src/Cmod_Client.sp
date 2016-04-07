@@ -2,6 +2,7 @@
 #include <cmod/version>
 #include <cmod/Exp>
 #include <cmod/Class>
+#include <cmod/Item>
 
 #include "Cmod/Client/ClientData"
 #include "Cmod/Client/LibraryMan"
@@ -52,6 +53,8 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
   CreateNative("ClientID.expID.get", native_ClientID_expID_get);
   CreateNative("ClientID.getClass", native_ClientID_getClass);
   CreateNative("ClientID.setClass", native_ClientID_setClass);
+  CreateNative("ClientID.getItem", native_ClientID_getItem);
+  CreateNative("ClientID.setItem", native_ClientID_setItem);
 
   CreateNative("CmodClient.getClientByExpID", native_CmodClient_getClientByExpID);
   return APLRes_Success;
@@ -70,6 +73,16 @@ public native_ClientID_getClass(Handle plugin, int numParams) {
 public native_ClientID_setClass(Handle plugin, int numParams) {
   Client client = GetNativeCell(1);
   client.setClass(GetNativeCell(2));
+}
+
+public native_ClientID_getItem(Handle plugin, int numParams) {
+  Client client = GetNativeCell(1);
+  return view_as<int>(client.getItem());
+}
+
+public native_ClientID_setItem(Handle plugin, int numParams) {
+  Client client = GetNativeCell(1);
+  client.setItem(GetNativeCell(2));
 }
 
 public int native_CmodClient_getClientByExpID(Handle plugin, int numParams) {

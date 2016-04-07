@@ -2,6 +2,7 @@ static ClientData data;
 static LibraryMan lib;
 static ExpID clientExpID[MAXPLAYERS + 1] = {ExpID_Invalid, ...};
 static ClassID clientClass[MAXPLAYERS + 1] = {ClassID_Invalid, ...};
+static ItemID clientItem[MAXPLAYERS + 1] = {ItemID_Invalid, ...};
 
 enum Client {
   Client_Invalid = -1,
@@ -34,12 +35,29 @@ methodmap Client {
       classID.sendEnable(view_as<int>(this));
   }
 
+  public ItemID getItem() {
+    return clientItem[this];
+  }
+
+  public void setItem(ItemID itemID) {
+    if (clientItem[this].isValid())
+      clientItem[this].sendDisable(view_as<int>(this));
+
+    clientItem[this] = itemID;
+
+    if (clientItem[this].isValid())
+      itemID.sendEnable(view_as<int>(this));
+  }
+
   public void onPluginEnd() {
     if (lib.isExpCoreLoaded && this.expID.isValid())
       this.expID.remove();
 
     if (lib.isClassCoreLoaded)
       this.setClass(ClassID_Invalid);
+
+    if (lib.isItemCoreLoaded)
+      this.setItem(ItemID_Invalid);
   }
 
   public void onPutInServer() {
@@ -50,6 +68,9 @@ methodmap Client {
   public void onDisconnect() {
     if (lib.isExpCoreLoaded)
       this.setClass(ClassID_Invalid);
+
+    if (lib.isItemCoreLoaded)
+      this.setItem(ItemID_Invalid);
   }
 
   public void onDisconnectPost() {
