@@ -66,7 +66,7 @@ methodmap Client {
   }
 
   public void onDisconnect() {
-    if (lib.isExpCoreLoaded)
+    if (lib.isClassCoreLoaded)
       this.setClass(ClassID_Invalid);
 
     if (lib.isItemCoreLoaded)
