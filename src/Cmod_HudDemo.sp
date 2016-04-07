@@ -1,5 +1,14 @@
 #include <sourcemod>
 #include <cmod>
+#include <cmod/version>
+
+public Plugin myinfo = {
+  name = "Cmod_HudDemo",
+  author = "plx211",
+  description = "This is example showing how we can make a pseudo hud",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 const float timerInterval = 1.0;
 
@@ -20,7 +29,7 @@ public Action timerShowHud(Handle timer, any data) {
   if (!IsClientInGame(data) || !IsPlayerAlive(data))
     return;
 
-  Client client = view_as<Client>(data);
+  ClientID client = view_as<ClientID>(data);
 
   ClassID classID = client.getClass();
   if(classID.isValid())
