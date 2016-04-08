@@ -55,7 +55,7 @@ public Action cmd_showStatsMenu(int client, int argc) {
 
 public int handler(Menu menu, MenuAction action, int param1, int param2) {
   if (action == MenuAction_Select){
-    Client client = view_as<Client>(param1);
+    ClientID client = view_as<ClientID>(param1);
     char[] info = new char[32];
     menu.GetItem(param2, info, 31)
     StatsID statsID = view_as<StatsID>(StringToInt(info));
