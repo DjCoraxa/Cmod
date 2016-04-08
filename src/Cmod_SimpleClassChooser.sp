@@ -1,5 +1,14 @@
 #include <sourcemod>
 #include <cmod>
+#include <cmod/version>
+
+public Plugin myinfo = {
+  name = "Cmod_SimpleClassChooser",
+  author = "plx211",
+  description = "Simple menu with class to choose",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 static CmodClass cmodClass;
 
@@ -37,7 +46,7 @@ public Action cmd_showClassMenu(int client, int argc) {
 
 public int handler(Menu menu, MenuAction action, int param1, int param2) {
   if (action == MenuAction_Select){
-    Client client = view_as<Client>(param1);
+    ClientID client = view_as<ClientID>(param1);
     char[] info = new char[32];
     menu.GetItem(param2, info, 31)
     ClassID classID = view_as<ClassID>(StringToInt(info));
