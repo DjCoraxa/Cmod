@@ -1,6 +1,7 @@
 static bool isExpCoreLoaded;
 static bool isClassCoreLoaded;
 static bool isItemCoreLoaded;
+static bool isStatsCoreLoaded;
 
 methodmap LibraryMan {
   property bool isExpCoreLoaded {
@@ -21,6 +22,12 @@ methodmap LibraryMan {
     }
   }
 
+  property bool isStatsCoreLoaded {
+    public get() {
+      return isStatsCoreLoaded;
+    }
+  }
+
   public void onLoadLibrary(const char[] library) {
     if (StrEqual(library, "Cmod_ExpCore"))
       isExpCoreLoaded = true;
@@ -28,5 +35,7 @@ methodmap LibraryMan {
       isClassCoreLoaded = true;
     else if (StrEqual(library, "Cmod_ItemCore"))
       isItemCoreLoaded = true;
+    else if (StrEqual(library, "Cmod_StatsCore"))
+      isStatsCoreLoaded = true;
   }
 };
