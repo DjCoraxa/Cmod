@@ -1,5 +1,14 @@
 #include <sourcemod>
 #include <cmod>
+#include <cmod/version>
+
+public Plugin myinfo = {
+  name = "Cmod_SimpleStatsMenu",
+  author = "plx211",
+  description = "Simple menu with stats for spends pts",
+  version = CMOD_PLUGIN_VERSION,
+  url = "https://github.com/plx211/Cmod"
+};
 
 CmodStats cmodStats;
 
@@ -18,7 +27,7 @@ public void OnPluginStart() {
 public Action cmd_showStatsMenu(int client, int argc) {
   Menu menu = new Menu(handler);
 
-  Client cmodClient = view_as<Client>(client);
+  ClientID cmodClient = view_as<ClientID>(client);
 
   menu.SetTitle("Stats menu (%d pts)", cmodClient.freeStatsPts);
 
