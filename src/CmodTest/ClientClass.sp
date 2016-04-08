@@ -26,17 +26,17 @@ public void onClassDisable(ClassID classID, int client) {
 
 public Action cmd_cmodtest_enableclass(int client, int argc) {
   PrintToChat(client, "Enable class")
-  Client cmodClient = view_as<Client>(1);
+  ClientID cmodClient = view_as<ClientID>(1);
   cmodClient.setClass(testClass);
 }
 
 public Action cmd_cmodtest_disableclass(int client, int argc) {
   PrintToChat(client, "Disable class")
-  Client cmodClient = view_as<Client>(1);
+  ClientID cmodClient = view_as<ClientID>(1);
   cmodClient.setClass(ClassID_Invalid);
 }
 
 public Action cmd_cmodtest_getclass(int client, int argc) {
-  Client cmodClient = view_as<Client>(1);
+  ClientID cmodClient = view_as<ClientID>(1);
   PrintToChat(client, "class = %d", cmodClient.getClass());
 }
