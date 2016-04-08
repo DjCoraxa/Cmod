@@ -140,7 +140,9 @@ methodmap Client {
     if (lib.isStatsCoreLoaded) {
       StatsID maxID = cmodStats.maxID;
       for (StatsID statsID = view_as<StatsID>(0); statsID < maxID; ++statsID) {
-        statsID.sendActivate(view_as<int>(this), this.getStatsAllPts(statsID));
+        if (statsID.isValid()) {
+          statsID.sendActivate(view_as<int>(this), this.getStatsAllPts(statsID));
+        }
       }
     }
   }
