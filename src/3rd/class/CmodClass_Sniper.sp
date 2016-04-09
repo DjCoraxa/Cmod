@@ -28,11 +28,23 @@ public void OnAllPluginsLoaded() {
   sniper.hookEnable(onClassEnable);
   sniper.hookDisable(onClassDisable);
 
-  extraDMG = new PreparedSkill(cmodSkill.getIDByName("extra_dmg"));
-  extraDMG.setString("weapon", "weapon_awp");
-  extraDMG.setFloat("dmg", 150.0);
-  extraDMG.setValue("stats_id", cmodStats.getIDByName("Inteligence"));
-  extraDMG.setFloat("stats_multiply", 0.25);
+  cmodSkill.notifyWhenAvalible("extra_dmg", extraDMGAvalible);
+}
+
+public void OnPluginEnd() {
+  if (sniper.isValid())
+    sniper.remove()
+
+  if (extraDMG.isValid())
+    extraDMG.remove();
+}
+
+public void extraDMGAvalible(SkillID skillID, char[] name) {
+  extraDMG = new PreparedSkill(skillID);
+  extraDMG.setString("weapon", "weapon_awp", true);
+  extraDMG.setFloat("dmg", 150.0, true);
+  extraDMG.setValue("stats_id", cmodStats.getIDByName("Inteligence"), true);
+  extraDMG.setFloat("stats_multiply", 0.25, true);
 }
 
 public void onClassEnable(ClassID classID, int client) {
@@ -43,6 +55,9 @@ public void onClassEnable(ClassID classID, int client) {
 
   for (int i = 0; i < giveWeaponsCount; ++i)
     clientID.addWeaponToGiveList(giveWeapons[i]);
+
+  if (extraDMG.isValid())
+    extraDMG.start(client);
 }
 
 public void onClassDisable(ClassID classID, int client) {
@@ -53,4 +68,7 @@ public void onClassDisable(ClassID classID, int client) {
 
   for (int i = 0; i < giveWeaponsCount; ++i)
     clientID.removeWeaponFromGiveList(giveWeapons[i]);
+
+  if (extraDMG.isValid())
+    extraDMG.stop(client);
 }
