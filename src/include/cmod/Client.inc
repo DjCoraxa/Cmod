@@ -71,6 +71,14 @@ methodmap ClientID {
   property ExpID expID {
     public native get();
   }
+
+  // Stock
+
+  public bool isValid() {
+    if (!(0 < view_as<int>(this) <= MaxClients) || !IsClientInGame(view_as<int>(this)))
+      return false;
+    return true;
+  }
 };
 
 methodmap CmodClient {
