@@ -7,6 +7,10 @@ enum PreparedVarType {
   PreparedVar_Count
 };
 
+enum PreparedSkill {
+  PreparedSkill_Invalid = -1
+};
+
 methodmap PreparedSkill __nullable__ {
   public native PreparedSkill(SkillID targetSkill);
 
