@@ -1,4 +1,5 @@
 static NamedSlotData data;
+static Request request;
 
 methodmap NamedSlotID __nullable__ < SlotID {
   public int getName(char[] buffer, int maxLength) {
@@ -30,13 +31,15 @@ methodmap NamedSlotID __nullable__ < SlotID {
     data.fwdCreate.send(slotID, name);
 #endif
 
+    request.onNamedSlotCreate(slotID, name);
+
     return slotID;
   }
 
   public void remove() {
     SlotID slot = this;
     slot.remove();
-    
+
 #if defined NAMEDSLOT_REMOVE_FORWARD
     char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
     this.getName(name, MAX_SLOT_NAME_LENGTH);

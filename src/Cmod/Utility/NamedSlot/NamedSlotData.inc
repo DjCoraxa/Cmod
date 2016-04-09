@@ -1,5 +1,6 @@
 static DataArray nameArray;
 static DataArray descArray;
+static StringMap waitList;
 
 #if defined NAMEDSLOT_CREATE_FORWARD
 static ForwardCreateNamedSlot fwdCreate;
@@ -13,6 +14,7 @@ methodmap NamedSlotData __nullable__ < SlotData {
   public NamedSlotData() {
     nameArray = new DataArray(MAX_SLOT_NAME_LENGTH + 1);
     descArray = new DataArray(MAX_SLOT_DESC_LENGTH + 1);
+    waitList = new StringMap();
 
 #if defined NAMEDSLOT_CREATE_FORWARD
     fwdCreate = new ForwardCreateNamedSlot();
@@ -34,6 +36,12 @@ methodmap NamedSlotData __nullable__ < SlotData {
   property DataArray descArray {
     public get() {
       return descArray;
+    }
+  }
+
+  property StringMap waitList {
+    public get() {
+      return waitList;
     }
   }
 
