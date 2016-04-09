@@ -36,6 +36,10 @@ typeset StatsRemoveCB {
   function void (StatsID statsID, char[] name);
 }
 
+typeset  StatsRequestCB {
+  function void (StatsID statsID, char[] name);
+}
+
 methodmap CmodStats {
   property int maxNameLength {
     public native get();
@@ -58,4 +62,6 @@ methodmap CmodStats {
   property StatsID maxID {
     public native get();
   }
+
+  public native void notifyWhenAvalible(char[] name, StatsRequestCB callback);  
 };

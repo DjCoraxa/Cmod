@@ -1,4 +1,5 @@
 static StatsData data;
+static Request request;
 
 void statsCoreStart() {
   data = new StatsData();
@@ -25,6 +26,7 @@ void statsCoreNative() {
   CreateNative("CmodStats.maxDescLength.get", native_CmodStats_maxDescLength_get);
   CreateNative("CmodStats.getIDByName", native_CmodStats_getIDByName);
   CreateNative("CmodStats.maxID.get", native_CmodStats_maxID_get);
+  CreateNative("CmodStats.notifyWhenAvalible", native_CmodStats_notifyWhenAvalible);
 }
 
 public int native_StatsID_StatsID(Handle plugin, int numParams) {
@@ -126,4 +128,11 @@ public int native_CmodStats_getIDByName(Handle plugin, int numParams) {
 
 public int native_CmodStats_maxID_get(Handle plugin, int numParams) {
   return data.slotArray.length;
+}
+
+public int native_CmodStats_notifyWhenAvalible(Handle plugin, int numParams) {
+  char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
+  GetNativeString(2, name, MAX_SLOT_NAME_LENGTH);
+
+  request.addToRequest(name, plugin, GetNativeCell(3));
 }
