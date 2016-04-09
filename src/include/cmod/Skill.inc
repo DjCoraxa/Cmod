@@ -4,11 +4,11 @@
 #define _cmodlib_skillcore_included
 
 typeset SkillCreateCB {
-  function void (SkillID skillID);
+  function void (SkillID skillID, char[] name);
 }
 
 typeset SkillRemoveCB {
-  function void (SkillID skillID);
+  function void (SkillID skillID, char[] name);
 }
 
 typeset SkillStartCB {

@@ -9,12 +9,12 @@
 
 #include "Cmod/Utility/Slot/Enum/Slot"
 #include "Cmod/Utility/Slot/Enum/SlotStatus"
-#include "Cmod/Utility/Slot/Forward/ForwardCreateSlotID"
-#include "Cmod/Utility/Slot/Forward/ForwardRemoveSlotID"
 #include "Cmod/Utility/Slot/SlotArray"
 #include "Cmod/Utility/Slot/SlotData"
 #include "Cmod/Utility/Slot/SlotID"
 
+#include "Cmod/Utility/NamedSlot/Forward/ForwardCreateNamedSlot"
+#include "Cmod/Utility/NamedSlot/Forward/ForwardRemoveNamedSlot"
 #include "Cmod/Utility/NamedSlot/Enum/NamedSlotID"
 #include "Cmod/Utility/NamedSlot/NamedSlotData"
 #include "Cmod/Utility/NamedSlot/NamedSlotID"
