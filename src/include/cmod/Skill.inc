@@ -11,6 +11,10 @@ typeset SkillRemoveCB {
   function void (SkillID skillID, char[] name);
 }
 
+typeset  SkillRequestCB {
+  function void (SkillID skillID, char[] name);
+}
+
 typeset SkillStartCB {
   function void (SkillID skillID, PreparedSkill preparedSkill, int entity);
 }
@@ -72,4 +76,6 @@ methodmap CmodSkill {
   public native bool unhookRemoveSkill(SkillRemoveCB callback);
 
   public native SkillID getIDByName(char[] name);
+
+  public native void notifyWhenAvalible(char[] name, SkillRequestCB callback);
 };

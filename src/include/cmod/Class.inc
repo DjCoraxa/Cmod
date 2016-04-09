@@ -56,6 +56,10 @@ typeset ClassRemoveCB {
   function void (ClassID classID, char[] name);
 }
 
+typeset ClassRequestCB {
+  function void (ClassID classID, char[] name);
+}
+
 methodmap CmodClass {
   property int maxNameLength {
     public native get();
@@ -78,4 +82,6 @@ methodmap CmodClass {
   property ClassID maxID {
     public native get();
   }
+
+  public native void notifyWhenAvalible(char[] name, ClassRequestCB callback);
 }

@@ -1,4 +1,5 @@
 static ClassData data;
+static Request request;
 
 void classCoreStart() {
   data = new ClassData();
@@ -31,6 +32,7 @@ void classCoreNative() {
   CreateNative("CmodClass.maxDescLength.get", native_CmodClass_maxDescLength_get);
   CreateNative("CmodClass.getIDByName", native_CmodClass_getIDByName);
   CreateNative("CmodClass.maxID.get", native_CmodClass_maxID_get);
+  CreateNative("CmodClass.notifyWhenAvalible", native_CmodClass_notifyWhenAvalible);
 }
 
 public int native_ClassID_ClassID(Handle plugin, int numParams) {
@@ -162,4 +164,11 @@ public int native_CmodClass_getIDByName(Handle plugin, int numParams) {
 
 public int native_CmodClass_maxID_get(Handle plugin, int numParams) {
   return data.slotArray.length;
+}
+
+public int native_CmodClass_notifyWhenAvalible(Handle plugin, int numParams) {
+  char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
+  GetNativeString(2, name, MAX_SLOT_NAME_LENGTH);
+
+  request.addToRequest(name, plugin, GetNativeCell(3));
 }

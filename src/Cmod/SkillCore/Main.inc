@@ -1,4 +1,5 @@
 static SkillData data;
+static Request request;
 
 void skillCoreStart() {
   data = new SkillData();
@@ -21,6 +22,7 @@ void skillCoreNative() {
   CreateNative("CmodSkill.maxNameLength.get", native_CmodSkill_maxNameLength_get);
   CreateNative("CmodSkill.maxDescLength.get", native_CmodSkill_maxDescLength_get);
   CreateNative("CmodSkill.getIDByName", native_CmodSkill_getIDByName);
+  CreateNative("CmodSkill.notifyWhenAvalible", native_CmodSkill_notifyWhenAvalible);
 }
 
 public int native_SkillID_SkillID(Handle plugin, int numParams) {
@@ -103,4 +105,11 @@ public int native_CmodSkill_getIDByName(Handle plugin, int numParams) {
   char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
   GetNativeString(1, name, MAX_SLOT_NAME_LENGTH);
   return data.nameArray.findString(name);
+}
+
+public int native_CmodSkill_notifyWhenAvalible(Handle plugin, int numParams) {
+  char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
+  GetNativeString(2, name, MAX_SLOT_NAME_LENGTH);
+
+  request.addToRequest(name, plugin, GetNativeCell(3));
 }
