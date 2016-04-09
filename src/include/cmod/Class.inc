@@ -49,11 +49,11 @@ methodmap ClassID __nullable__ {
 };
 
 typeset ClassCreateCB {
-  function void (ClassID classID);
+  function void (ClassID classID, char[] name);
 };
 
 typeset ClassRemoveCB {
-  function void (ClassID classID);
+  function void (ClassID classID, char[] name);
 }
 
 methodmap CmodClass {
