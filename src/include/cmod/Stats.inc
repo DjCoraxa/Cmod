@@ -29,11 +29,11 @@ methodmap StatsID __nullable__ {
 };
 
 typeset StatsCreateCB {
-  function void (StatsID statsID);
+  function void (StatsID statsID, char[] name);
 };
 
 typeset StatsRemoveCB {
-  function void (StatsID statsID);
+  function void (StatsID statsID, char[] name);
 }
 
 methodmap CmodStats {
