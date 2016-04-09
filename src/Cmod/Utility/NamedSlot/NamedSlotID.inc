@@ -26,6 +26,21 @@ methodmap NamedSlotID __nullable__ < SlotID {
     slotID.setName(name);
     slotID.setDesc("");
 
+#if defined NAMEDSLOT_CREATE_FORWARD
+    data.fwdCreate.send(slotID, name);
+#endif
+
     return slotID;
+  }
+
+  public void remove() {
+    SlotID slot = this;
+    slot.remove();
+    
+#if defined NAMEDSLOT_REMOVE_FORWARD
+    char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
+    this.getName(name, MAX_SLOT_NAME_LENGTH);
+    data.fwdRemove.send(this, name);
+#endif
   }
 };
