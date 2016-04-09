@@ -15,6 +15,11 @@ float bonusDMG[MAXPLAYERS + 1][WEAPON_SLOT_NUMBER + 1];
 
 
 public void OnAllPluginsLoaded() {
+  // This loop is to change in future
+  for (int client = 0; client < MAXPLAYERS; ++client)
+    for (int i = 0; i < WEAPON_SLOT_NUMBER; ++i)
+      preparedSlot[client][i] = PreparedSkill_Invalid;
+
   extraDMG = new SkillID("extra_dmg");
   extraDMG.setDesc("Increse weapon DMG");
   extraDMG.hookPrepare(onSkillPrepare);
@@ -34,8 +39,6 @@ public Action onTakeDMG(int victim, int &attacker, int &inflictor, float &damage
   char[] weaponName = new char[WEAPON_NAME_LENGTH + 1];
 //  GetEdictClassname(weapon, weaponName, WEAPON_NAME_LENGTH);
   GetClientWeapon(attacker, weaponName, WEAPON_NAME_LENGTH);
-
-  int slot = findSlotByWeapon(attacker, weaponName);
 
   if (slot == -1)
     return Plugin_Continue;
