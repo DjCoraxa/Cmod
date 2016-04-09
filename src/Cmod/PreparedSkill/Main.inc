@@ -10,11 +10,11 @@ void preparedSkillStart() {
   cmodSkill.hookRemoveSkill(onRemoveSkill);
 }
 
-public void onCreateSkill(SkillID skillID) {
+public void onCreateSkill(SkillID skillID, char[] name) {
   SkillCFG skillCFG = new SkillCFG(skillID);
 }
 
-public void onRemoveSkill(SkillID skillID) {
+public void onRemoveSkill(SkillID skillID, char[] name) {
   SkillCFG skillCFG = view_as<SkillCFG>(skillID);
   skillCFG.remove();
 }
