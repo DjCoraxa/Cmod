@@ -1,6 +1,6 @@
 methodmap ForwardCreateNamedSlot __nullable__ < ForwardBase {
   public ForwardCreateNamedSlot() {
-    return view_as<ForwardCreateNamedSlot>(CreateForward(ET_Ignore, Param_Cell));
+    return view_as<ForwardCreateNamedSlot>(CreateForward(ET_Ignore, Param_Cell, Param_String));
   }
 
   public void send(Slot slotID, char[] name) {
