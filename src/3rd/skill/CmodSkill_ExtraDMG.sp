@@ -40,6 +40,8 @@ public Action onTakeDMG(int victim, int &attacker, int &inflictor, float &damage
 //  GetEdictClassname(weapon, weaponName, WEAPON_NAME_LENGTH);
   GetClientWeapon(attacker, weaponName, WEAPON_NAME_LENGTH);
 
+  int slot = findSlotByWeapon(attacker, weaponName);
+
   if (slot == -1)
     return Plugin_Continue;
 
@@ -93,4 +95,5 @@ public void onSkillStop(SkillID skillID, PreparedSkill preparedSkill, int entity
     return
 
   preparedSlot[entity][slot] = PreparedSkill_Invalid;
+  skillWeapon[entity][slot] = "";
 }
