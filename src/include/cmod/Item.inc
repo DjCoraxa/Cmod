@@ -56,6 +56,10 @@ typeset ItemRemoveCB {
   function void (ItemID itemID, char[] name);
 }
 
+typeset ItemRequestCB {
+  function void (ItemID itemID, char[] name);
+}
+
 methodmap CmodItem {
   property int maxNameLength {
     public native get();
@@ -74,4 +78,6 @@ methodmap CmodItem {
   public native bool unhookRemoveItem(ItemRemoveCB callback);
 
   public native ItemID getIDByName(char[] name);
+
+  public native void notifyWhenAvalible(char[] name, ItemRequestCB callback);
 }

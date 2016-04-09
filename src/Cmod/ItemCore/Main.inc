@@ -1,4 +1,5 @@
 static ItemData data;
+static Request request;
 
 void itemCoreStart() {
   data = new ItemData();
@@ -30,6 +31,7 @@ void itemCoreNative() {
   CreateNative("CmodItem.maxNameLength.get", native_CmodItem_maxNameLength_get);
   CreateNative("CmodItem.maxDescLength.get", native_CmodItem_maxDescLength_get);
   CreateNative("CmodItem.getIDByName", native_CmodItem_getIDByName);
+  CreateNative("CmodItem.notifyWhenAvalible", native_CmodItem_notifyWhenAvalible);
 }
 
 public int native_ItemID_ItemID(Handle plugin, int numParams) {
@@ -157,4 +159,11 @@ public int native_CmodItem_getIDByName(Handle plugin, int numParams) {
   char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
   GetNativeString(1, name, MAX_SLOT_NAME_LENGTH);
   return data.nameArray.findString(name);
+}
+
+public int native_CmodItem_notifyWhenAvalible(Handle plugin, int numParams) {
+  char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
+  GetNativeString(2, name, MAX_SLOT_NAME_LENGTH);
+
+  request.addToRequest(name, plugin, GetNativeCell(3));
 }

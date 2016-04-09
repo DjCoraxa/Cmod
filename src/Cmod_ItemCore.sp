@@ -15,8 +15,10 @@
 
 #include "Cmod/Utility/NamedSlot/Forward/ForwardCreateNamedSlot"
 #include "Cmod/Utility/NamedSlot/Forward/ForwardRemoveNamedSlot"
+#include "Cmod/Utility/NamedSlot/Forward/ForwardRequestAvalible"
 #include "Cmod/Utility/NamedSlot/Enum/NamedSlotID"
 #include "Cmod/Utility/NamedSlot/NamedSlotData"
+#include "Cmod/Utility/NamedSlot/Request"
 #include "Cmod/Utility/NamedSlot/NamedSlotID"
 
 #include "Cmod/ItemCore/Enum/ItemID"
