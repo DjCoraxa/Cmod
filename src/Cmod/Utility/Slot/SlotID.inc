@@ -31,7 +31,9 @@ methodmap SlotID __nullable__ < Slot {
 
     slotID.status = SlotStatus_Use;
 
+#if defined SLOT_CREATE_FORWARD
     data.fwdCreate.send(slotID);
+#endif
 
     return slotID;
   }
@@ -39,6 +41,8 @@ methodmap SlotID __nullable__ < Slot {
   public void remove() {
     this.status = SlotStatus_Free;
 
+#if defined SLOT_REMOVE_FORWARD
     data.fwdRemove.send(this);
+#endif
   }
 }
