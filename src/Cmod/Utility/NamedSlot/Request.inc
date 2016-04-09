@@ -20,6 +20,7 @@ methodmap Request {
 
   public void addToRequest(char[] name, Handle plugin, Function callback) {
     ForwardRequestAvalible requestFwd = new ForwardRequestAvalible();
+    requestFwd.hook(plugin, callback);
     Slot slot = view_as<Slot>(data.nameArray.findString(name));
 
     if (slot != Slot_Invalid) {
