@@ -49,11 +49,11 @@ methodmap ItemID __nullable__ {
 };
 
 typeset ItemCreateCB {
-  function void (ItemID itemID);
+  function void (ItemID itemID, char[] name);
 };
 
 typeset ItemRemoveCB {
-  function void (ItemID itemID);
+  function void (ItemID itemID, char[] name);
 }
 
 methodmap CmodItem {
