@@ -6,10 +6,15 @@ void expCoreStart() {
 }
 
 void expCoreNative() {
+#if defined SLOT_CREATE_FORWARD
   CreateNative("CmodExp.hookCreateExpID", native_CmodExp_hookCreateExpID);
   CreateNative("CmodExp.unhookCreateExpID", native_CmodExp_unhookCreateExpID);
+#endif
+
+#if defined SLOT_REMOVE_FORWARD
   CreateNative("CmodExp.hookRemoveExpID", native_CmodExp_hookRemoveExpID);
   CreateNative("CmodExp.unhookRemoveExpID", native_CmodExp_unhookRemoveExpID);
+#endif
 
   CreateNative("ExpID.ExpID", native_ExpID_ExpID);
   CreateNative("ExpID.remove", native_ExpID_remove);
@@ -25,6 +30,7 @@ void expCoreNative() {
   CreateNative("ExpID.isValid", native_ExpID_isValid);
 }
 
+#if defined SLOT_CREATE_FORWARD
 public int native_CmodExp_hookCreateExpID(Handle plugin, int numParams) {
   return data.fwdCreate.hook(plugin, GetNativeCell(2));
 }
@@ -32,7 +38,9 @@ public int native_CmodExp_hookCreateExpID(Handle plugin, int numParams) {
 public int native_CmodExp_unhookCreateExpID(Handle plugin, int numParams) {
   return data.fwdCreate.unhook(plugin, GetNativeCell(2));
 }
+#endif
 
+#if defined SLOT_REMOVE_FORWARD
 public int native_CmodExp_hookRemoveExpID(Handle plugin, int numParams) {
   return data.fwdRemove.hook(plugin, GetNativeCell(2));
 }
@@ -40,6 +48,7 @@ public int native_CmodExp_hookRemoveExpID(Handle plugin, int numParams) {
 public int native_CmodExp_unhookRemoveExpID(Handle plugin, int numParams) {
   return data.fwdRemove.unhook(plugin, GetNativeCell(2));
 }
+#endif
 
 public int native_ExpID_ExpID(Handle plugin, int numParams) {
   return view_as<int>(new ExpID(GetNativeCell(1), GetNativeCell(2)));

@@ -11,8 +11,15 @@
 
 #include "Cmod/Utility/Slot/Enum/Slot"
 #include "Cmod/Utility/Slot/Enum/SlotStatus"
+
+#if defined SLOT_CREATE_FORWARD
 #include "Cmod/Utility/Slot/Forward/ForwardCreateSlotID"
+#endif
+
+#if defined SLOT_REMOVE_FORWARD
 #include "Cmod/Utility/Slot/Forward/ForwardRemoveSlotID"
+#endif
+
 #include "Cmod/Utility/Slot/SlotArray"
 #include "Cmod/Utility/Slot/SlotData"
 #include "Cmod/Utility/Slot/SlotID"
