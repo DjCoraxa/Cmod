@@ -27,6 +27,8 @@ methodmap DataArray __nullable__ < Handle {
 
   public native int findString(const char[] item) = FindStringInArray;
 
+  public native int pushString(const char[] value) = PushArrayString;
+
   public void setValue(int index, any value, int block = 0) {
     if (index >= this.length)
       this.resize(index + RESIZE_BACKUP);
