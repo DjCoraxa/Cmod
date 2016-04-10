@@ -108,36 +108,36 @@ methodmap Client {
   }
 
   public void onPluginEnd() {
-    if (lib.isExpCoreLoaded && this.expID.isValid())
+    if (lib.isLoaded(CmodLib_ExpCore) && this.expID.isValid())
       this.expID.remove();
 
-    if (lib.isClassCoreLoaded)
+    if (lib.isLoaded(CmodLib_ClassCore))
       this.setClass(ClassID_Invalid);
 
-    if (lib.isItemCoreLoaded)
+    if (lib.isLoaded(CmodLib_ItemCore))
       this.setItem(ItemID_Invalid);
   }
 
   public void onPutInServer() {
-    if (lib.isExpCoreLoaded)
+    if (lib.isLoaded(CmodLib_ExpCore))
       this.expID = new ExpID(data.cvarMaxLvl.IntValue, data.cvarLvlRatio.IntValue);
   }
 
   public void onDisconnect() {
-    if (lib.isClassCoreLoaded)
+    if (lib.isLoaded(CmodLib_ExpCore))
       this.setClass(ClassID_Invalid);
 
-    if (lib.isItemCoreLoaded)
+    if (lib.isLoaded(CmodLib_ItemCore))
       this.setItem(ItemID_Invalid);
   }
 
   public void onDisconnectPost() {
-    if (lib.isExpCoreLoaded && this.expID.isValid())
+    if (lib.isLoaded(CmodLib_ExpCore) && this.expID.isValid())
       this.expID.remove();
   }
 
   public void onSpawn() {
-    if (lib.isStatsCoreLoaded) {
+    if (lib.isLoaded(CmodLib_StatsCore)) {
       StatsID maxID = cmodStats.maxID;
       for (StatsID statsID = view_as<StatsID>(0); statsID < maxID; ++statsID) {
         if (statsID.isValid()) {

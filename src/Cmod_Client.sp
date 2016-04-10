@@ -8,9 +8,9 @@
 
 #include "Cmod/Client/Config"
 #include "Cmod/Utility/Data/DataArray"
+#include "Cmod/Utility/LibraryMan/LibraryMan"
 #include "Cmod/Client/Enum/ClientPtsType"
 #include "Cmod/Client/ClientData"
-#include "Cmod/Client/LibraryMan"
 #include "Cmod/Client/Client"
 #include "Cmod/Client/ClientMan"
 
@@ -54,7 +54,7 @@ public void OnClientDisconnect_Post(int client) {
 }
 
 public void OnLibraryAdded(const char[] name) {
-  lib.onLoadLibrary(name);
+  lib.onLibraryAdded(name);
 
   if (StrEqual(name, "Cmod_StatsCore"))
     cmodStats.hookCreateStats(onStatsCreate);
@@ -65,7 +65,7 @@ public void onClientSpawn(int client) {
   cmodClient.onSpawn();
 }
 
-public void onStatsCreate(StatsID statsID) {
+public void onStatsCreate(StatsID statsID, char[] name) {
   for (Client client = Client_First; client < Client_Max; ++client)
     client.onStatsCreate(statsID);
 }
