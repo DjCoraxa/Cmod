@@ -2,7 +2,6 @@
 #include <cmod>
 
 CmodSkill cmodSkill;
-CmodStats cmodStats;
 
 char allowWeapons[][] = {
   "weapon_awp",
@@ -43,7 +42,7 @@ public void extraDMGAvalible(SkillID skillID, char[] name) {
   extraDMG = new PreparedSkill(skillID);
   extraDMG.setString("weapon", "weapon_awp", true);
   extraDMG.setFloat("dmg", 150.0, true);
-  extraDMG.setValue("stats_id", cmodStats.getIDByName("Inteligence"), true);
+  extraDMG.setString("stats", "Inteligence", true);
   extraDMG.setFloat("stats_multiply", 0.25, true);
 }
 
