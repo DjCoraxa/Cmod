@@ -2,14 +2,16 @@
 #include <sdkhooks>
 #include <cmod>
 
-const int WEAPON_SLOT_NUMBER = 64;
+const int WEAPON_SLOT_NUMBER = 128;
 const int WEAPON_NAME_LENGTH = 64;
+const int STATS_NAME_LENGTH = 128;
 
-SkillID extraDMG;
+static SkillID extraDMG;
+static CmodStats cmodStats;
 
 PreparedSkill preparedSlot[MAXPLAYERS + 1][WEAPON_SLOT_NUMBER + 1];
 char skillWeapon[MAXPLAYERS + 1][WEAPON_SLOT_NUMBER + 1][WEAPON_NAME_LENGTH + 1];
-StatsID stats[MAXPLAYERS + 1][WEAPON_SLOT_NUMBER + 1];
+char statsName[MAXPLAYERS + 1][WEAPON_SLOT_NUMBER + 1][STATS_NAME_LENGTH + 1];
 float statsMultiply[MAXPLAYERS + 1][WEAPON_SLOT_NUMBER + 1];
 float bonusDMG[MAXPLAYERS + 1][WEAPON_SLOT_NUMBER + 1];
 
@@ -45,8 +47,9 @@ public Action onTakeDMG(int victim, int &attacker, int &inflictor, float &damage
   if (slot == -1)
     return Plugin_Continue;
 
-  if (stats[attacker][slot].isValid()) {
-    damage += attackerID.getStatsAllPts(stats[attacker][slot]) * statsMultiply[attacker][slot];
+  StatsID statsID = cmodStats.getIDByName(statsName[attacker][slot]);
+  if (statsID.isValid()) {
+    damage += attackerID.getStatsAllPts(statsID) * statsMultiply[attacker][slot];
   }
 
   damage += bonusDMG[attacker][slot];
@@ -54,10 +57,10 @@ public Action onTakeDMG(int victim, int &attacker, int &inflictor, float &damage
 }
 
 public void onSkillPrepare(SkillID skillID, PreparedSkill preparedSkill) {
-  preparedSkill.setValue("stats_id", StatsID_Invalid);
+  preparedSkill.setString("stats", "");
   preparedSkill.setFloat("stats_multiply", 1.0);
   preparedSkill.setFloat("dmg", 0.0);
-  preparedSkill.setString("weapon", "weapon_none");
+  preparedSkill.setString("weapon", "");
 }
 
 int findSlot(int client, PreparedSkill preparedSkill = PreparedSkill_Invalid) {
@@ -81,12 +84,8 @@ public void onSkillStart(SkillID skillID, PreparedSkill preparedSkill, int entit
 
   preparedSkill.getString("weapon", skillWeapon[entity][slot], WEAPON_NAME_LENGTH);
   bonusDMG[entity][slot] = preparedSkill.getFloat("dmg")
-
-  StatsID statsID = preparedSkill.getValue("stats_id");
-  if (statsID.isValid()) {
-    stats[entity][slot] = statsID;
-    statsMultiply[entity][slot] = preparedSkill.getFloat("stats_multiply");
-  }
+  preparedSkill.getString("stats", statsName[entity][slot], STATS_NAME_LENGTH);
+  statsMultiply[entity][slot] = preparedSkill.getFloat("stats_multiply");
 }
 
 public void onSkillStop(SkillID skillID, PreparedSkill preparedSkill, int entity) {
