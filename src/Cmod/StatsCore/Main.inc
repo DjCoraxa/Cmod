@@ -122,7 +122,7 @@ public int native_CmodStats_maxDescLength_get(Handle plugin, int numParams) {
 
 public int native_CmodStats_getIDByName(Handle plugin, int numParams) {
   char[] name = new char[MAX_SLOT_NAME_LENGTH + 1];
-  GetNativeString(1, name, MAX_SLOT_NAME_LENGTH);
+  GetNativeString(2, name, MAX_SLOT_NAME_LENGTH);
   return data.nameArray.findString(name);
 }
 
