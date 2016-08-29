@@ -2,8 +2,6 @@
 
 #include "Cmod/Utility/BasicMacro/view_as"
 
-#include <cmod/Enum/EnumBase>
-
 #include "Cmod/ExpCore/Config"
 
 #include "Cmod/Utility/Data/DataArray"
