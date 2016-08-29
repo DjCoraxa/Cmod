@@ -1,8 +1,6 @@
 #include <sourcemod>
 #include <cmod/version>
 
-#include <cmod/Enum/EnumBase>
-
 #include "Cmod/ExpCore/Config"
 
 #include "Cmod/Utility/Data/DataArray"
