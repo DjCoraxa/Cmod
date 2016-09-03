@@ -6,8 +6,8 @@ public void OnPluginStart() {
 }
 
 public Action cmd_cmodtest_clientstatspts(int client, int argc) {
-  Client cmodClient = view_as<Client>(1);
-  PrintToServer("Client cmodClient = 1");
+  ClientID cmodClient = view_as<ClientID>(1);
+  PrintToServer("ClientID cmodClient = 1");
 
   PrintToServer("cmodClient.freeStatsPts return %d", cmodClient.freeStatsPts);
   cmodClient.freeStatsPts = 69;
@@ -28,7 +28,7 @@ public Action cmd_cmodtest_clientstatspts(int client, int argc) {
   cmodClient.recalculateStatsAllPts(stats);
   PrintToServer("cmodClient.recalculateStatsAllPts(stats)");
   PrintToServer("cmodClient.getStatsAllPts(stats) return %d", cmodClient.getStatsAllPts(stats));
-  
+
   PrintToServer("cmodClient.getStatsPts(stats) return %d", cmodClient.getStatsPts(stats));
   PrintToServer("cmodClient.freeStatsPts return %d", cmodClient.freeStatsPts);
   PrintToServer("cmodClient.spendStatsPts(stats, 3) return %d", cmodClient.spendStatsPts(stats, 3));
